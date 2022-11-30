@@ -6,6 +6,7 @@ package ProyectN2;
 
 import javax.swing.JFileChooser;
 import ProyectN2.procedures;
+import java.io.IOException;
 
 /**
  *
@@ -18,13 +19,13 @@ public class ProyectoN2 {
      */
     static procedures procedures = new procedures();
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         procedures.nameUser();
         menu();
 
     }
 
-    public static boolean menu() {
+    public static boolean menu() throws IOException {
 
         boolean exitAll = procedures.exitAll;
 
@@ -36,6 +37,9 @@ public class ProyectoN2 {
 
             }
             case 2: {
+                
+                
+                
 
                 break;
             }
@@ -52,8 +56,10 @@ public class ProyectoN2 {
                 procedures.readerData();
 
                 break;
+                 
             case 5:
-                procedures.groupRamdon();
+     
+                procedures.groupR();
 
                 break;
             case 6:

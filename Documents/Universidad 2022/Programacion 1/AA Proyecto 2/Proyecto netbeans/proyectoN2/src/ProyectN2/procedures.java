@@ -11,6 +11,7 @@ import java.nio.charset.StandardCharsets;
 import java.util.Scanner;
 import ClassProyect.Student;
 import java.io.File;
+import java.io.FileWriter;
 import javax.swing.JFileChooser;
 
 /**
@@ -31,20 +32,21 @@ public class procedures {
     public Student registerRegion[] = new Student[18];
     public Student registerR[] = new Student[18];
     public String numStudent = null;
-    public int ramdom[] = new int [18];
+    public int ramdom[] = new int[18];
+    static procedures main = new procedures();
 
     public int Login() {
         int option = 0;
         System.out.println("╔═══════════╗");
-        System.out.println("║Digite una opcion ║");
+        System.out.println("║Digite una opcion  ║");
         System.out.println("╚═══════════╝");
         System.out.println("╓──────────────────────────╗");
-        System.out.println("║1) Desea otro txt                          ║");
-        System.out.println("║2)                                         ║");
-        System.out.println("║3) Salir del programa                      ║");
-        System.out.println("║4) Ordenar grupos                          ║");
-        System.out.println("║5)                                         ║");
-        System.out.println("║6) Editar estudiantes                      ║");
+        System.out.println("║1) Desea otro txt                            ║");
+        System.out.println("║2)                                           ║");
+        System.out.println("║3) Salir del programa                        ║");
+        System.out.println("║4) Ordenar grupos                            ║");
+        System.out.println("║5)                                           ║");
+        System.out.println("║6) Editar estudiantes                        ║");
         System.out.println("╙──────────────────────────╝");
         System.out.print("─>");
 
@@ -103,14 +105,14 @@ public class procedures {
     public int crudMenu() {
         System.out.println("         Seleccione una opcion");
         System.out.println("╓────────────────────────╗");
-        System.out.println("║1)Editar el nombre                      ║");
-        System.out.println("║2)Editar el email                       ║");
-        System.out.println("║3)Editar el carnet                      ║");
-        System.out.println("║4)Editar el genero                      ║");
-        System.out.println("║5)Borrar Estudiante                     ║");
-        System.out.println("║6)Agregar o Remplazar Estudiante        ║");
-        System.out.println("║7)Ver todos los estudiantes             ║");
-        System.out.println("║8)Salir al menu principal               ║");
+        System.out.println("║1)Editar el nombre                       ║");
+        System.out.println("║2)Editar el email                        ║");
+        System.out.println("║3)Editar el carnet                       ║");
+        System.out.println("║4)Editar el genero                       ║");
+        System.out.println("║5)Borrar Estudiante                      ║");
+        System.out.println("║6)Agregar o Remplazar Estudiante         ║");
+        System.out.println("║7)Ver todos los estudiantes              ║");
+        System.out.println("║8)Salir al menu principal                ║");
         System.out.println("╙────────────────────────╝");
         System.out.print("─>");
         int option = scanner.nextInt();
@@ -214,78 +216,123 @@ public class procedures {
         return indic(numM, count + 1);
     }
 
+    public int selectTypeG() {
+
+        System.out.println(" ___________________________________________");
+        System.out.println("┊Digite 1 si desea los grupos por lista     ┊");
+        System.out.println("┊Digite 2 si desea los grupos Ramdom        ┊");
+        System.out.println("┊___________________________________________┊");
+        int selectTypeG = 0;
+        selectTypeG = scanner.nextInt();
+        return selectTypeG;
+
+    }
+
+    public int typeGroup(int locationPerson) {
+        int countRegisterR = 0;
+        int selectTypeG = selectTypeG();
+        exitAll = true;
+        if (selectTypeG == 1) {
+            for (int i = 0; i < registerStudents.length; i++) {
+                if (registerRegion[locationPerson].getGeographicLocation().equalsIgnoreCase(registerStudents[i].getGeographicLocation())) {
+                    registerR[countRegisterR] = registerStudents[i];
+                    countRegisterR++;
+                }
+            }
+        }
+        if (selectTypeG == 2) {
+
+            groupR();
+
+            for (int i = 0; i < registerStudents.length; i++) {
+                if (registerRegion[locationPerson].getGeographicLocation().equalsIgnoreCase(registerRamdomS[i].getGeographicLocation())) {
+                    registerR[countRegisterR] = registerRamdomS[i];
+                    countRegisterR++;
+                }
+            }
+        }
+
+        if (selectTypeG > 2) {
+            return typeGroup(locationPerson);
+        }
+        return 0;
+
+    }
+
+    public int sizeGroup() {
+        int countRegisterR = groupZize();
+        System.out.println("la cantidad de estudiantes que hay es de " + countRegisterR);
+
+        System.out.println("digite en la porcion de grupos que desea realizar");
+        System.out.print("─>");
+        int groupSelect = scanner.nextInt();
+
+        return groupSelect;
+
+    }
+
+    public int groupZize() {
+        if (exitAll == true) {
+            count = 0;
+            exitAll = false;
+        }
+
+        if (count == registerR.length) {
+            return count;
+        }
+        if (registerR[count] == null) {
+            return count;
+        }
+        count++;
+        return groupZize();
+    }
+
     /**
      * esta funcion esta a puro For e incompleta se encarga de Agrupar
      * estudiantes
      */
-    public void readerData() {
+    public void readerData() throws IOException {
+
+        System.out.println("seleccione la ubicacion donde se va almacenar los datos");
+        String ubication = selectFile();
+
         indice(0);
+
+        int t = 0;
+        FileWriter myWriter = new FileWriter(ubication);
+        seeRegion();
+
+        int locationPerson = scanner.nextInt();
+        locationPerson = locationPerson - 1;
+
+        //llamar a un metodo que inicialice datos
+        typeGroup(locationPerson);
+        int countRegisterR = groupZize();
+//____________________________________________________________________________________________________
+
+        int groupSelect = sizeGroup();
+        boolean var = true;
         int countGroup = 0;
         int numGroup = 1;
         exitAll = true;
-        int t = 0;
-        System.out.println("────────────────────╣");
-        for (int i = 0; i < registerRegion.length; i++) {
-            if (registerRegion[i] != null) {
-                System.out.println((i + 1) + ")" + registerRegion[i].getGeographicLocation());
-            }
-
-        }
-        System.out.println("────────────────────╣");
-        System.out.println("seleccione la region que desea filtrar");
-        System.out.print("─>");
-        int locationPerson;
-        int  countRegisterR = 0;
-
-        locationPerson = scanner.nextInt();
-        locationPerson = locationPerson - 1;
-
-        for (int i = 0; i < registerStudents.length; i++) {
-            if (registerRegion[locationPerson].getGeographicLocation().equalsIgnoreCase(registerStudents[i].getGeographicLocation())) {
-
-                registerR[countRegisterR] = registerRamdomS[i];
-                countGroup++;
-                if (exitAll == true) {
-                }
-                if (countGroup == 3) {
-                    countGroup = 0;
-                    numGroup = numGroup + 1;
-                }
-                countRegisterR++;
-            }
-        }
-        countRegisterR = 0;
-        for (countRegisterR = 0; countRegisterR < registerR.length; countRegisterR++) {
-            if (registerR[countRegisterR] == null) {
-                break;
-            }
-        }
-        System.out.println("la cantidad de estudiantes que hay es de " + countRegisterR);
-        numGroup = 1;
-        System.out.println("digite en la porcion de grupos que desea realizar");
-        System.out.print("─>");
-        int y = 0;
-        y = scanner.nextInt();
-        countGroup = 0;
-        y = y;
-
-        boolean var = true;
-
         for (int j = 0; j < registerR.length; j++) {
             if (registerR[j] == null) {
                 break;
             }
-
             if (var == true) {
-        System.out.println("─────────────────────────────────────────╣");
+                System.out.println("─────────────────────────────────────────╣");
                 System.out.println("Este es el grupo " + numGroup);
+                myWriter.write("Este es el grupo " + numGroup);
+                myWriter.write("\n");
                 var = false;
             }
             System.out.println("Estudiante " + (j + 1) + ") " + registerR[j].getName() + " N◦ carnet " + registerR[j].getIdStudent());
+            myWriter.write("Estudiante " + (j + 1) + ") " + registerR[j].getName() + " N◦ carnet " + registerR[j].getIdStudent());
+            myWriter.write("\n");
 
             if (exitAll == true) {
-                int varStorange = countRegisterR / y;
-                varStorange = varStorange * y;
+                int varStorange = countRegisterR / groupSelect;
+                varStorange = varStorange * groupSelect;
                 varStorange = countRegisterR - varStorange;
 
                 if (varStorange == 1) {
@@ -295,14 +342,16 @@ public class procedures {
                 exitAll = false;
             }
             countGroup++;
-            if (countGroup == y) {
+            if (countGroup == groupSelect) {
                 countGroup = 0;
                 var = true;
                 numGroup = numGroup + 1;
             }
-
         }
-         System.out.println("─────────────────────────────────────────╣");
+        myWriter.close();
+
+        System.out.println("─────────────────────────────────────────╣");
+
         t = 0;
         for (int i = 0; i < registerStudents.length; i++) {
             if (registerRegion[locationPerson].getGeographicLocation().equalsIgnoreCase(registerStudents[i].getGeographicLocation())) {
@@ -607,108 +656,144 @@ public class procedures {
 
         numStudent = 0;
         return null;
-        
+
     }
-        
-        public int groupRamdon(){
-         
-            
-            if (exitAll==true) {
-            for (int i = 0; i < registerStudents.length; i++) {
-                ramdom[i]=-1;
-                System.out.println(ramdom[i]);
-                
-                
-            }
-           count=0;
-            exitAll=false;
-            }
-            if (count!=registerStudents.length) {
-                int var;
-                var =(int) ((Math.random() * 18) + 0);
-             
-                //var representa un math Ramdom
-                int x;
-                countVar=0;
-                x =generateRamdon(var);
-   
-                registerRamdomS[count]=registerStudents[x];
-                System.out.println(registerRamdomS[count]);
-                count++;
-                return groupRamdon();
-            }
+
+    public int groupRamdon(int count) {
+
+        if (count != registerStudents.length) {
+            int var;
+            var = (int) ((Math.random() * 18));
+
+            //var representa un math Ramdom
+            int x;
+
+            x = generateRamdon(var, count);
+
+            registerRamdomS[count] = registerStudents[x];
+            System.out.println(registerRamdomS[count]);
             count++;
-          
-    
-   
-            
-            
-   
+            return groupRamdon(count);
+        }
 
         return 0;
 
-
-
-
-
-
-
-
-}
-        
-        
-       public int generateRamdon( int generateR){
-    
-            if (ramdom[countVar]==-1) {
-               ramdom[countVar]=generateR;
-   
-           
-               return generateR;
-           }
-             if (countVar==ramdom.length) {
-                countVar=0;
-               return generateR;
-           }
-           for (int i = 0; i < ramdom.length; i++) {
-               if (generateR==ramdom[i]) {
-                countVar =0;
-
-                //llamar al metodo generar numero ramdon
-                //asignar el numero a ge
-                int var1;//esta va a ser la variable del math
-                var1 =(int) ((Math.random() * 18) + 0);
-                generateR = var1;
-                return generateRamdon(generateR);            
-           }
-           }
-        
-            
-           
-           
-            countVar++;
-
-            if (countVar<ramdom.length) {
-               return generateRamdon(generateR);
-           }
-     
-   
-            
-            
-   
-
-        return  generateRamdon(generateR);
-
-
-
-
-
-
-
-
-}
-           
-        
-        
     }
 
+    public int generateRamdon(int generateR, int countVar) {
+        int i = 0;
 
+        while (i < ramdom.length) {
+            if (generateR == ramdom[i]) {
+                int var1;
+                var1 = (int) ((Math.random() * 18));
+                generateR = var1;
+
+                i = -1;
+
+            }
+            i++;
+        }
+        System.out.println(countVar);;
+        if (ramdom[countVar] == -1) {
+            ramdom[countVar] = generateR;
+
+            return generateR;
+        }
+        if (countVar == ramdom.length) {
+            ramdom[countVar] = generateR;
+
+            return generateR;
+        }
+        ramdom[countVar] = generateR;
+
+        return generateR;
+
+    }
+
+//     public void readerFile() {
+//        String openedFile = selectFile();
+//        BufferedReader objReader = null;
+//        try {
+//            String strCurrentLine;
+//
+//            objReader = new BufferedReader(new FileReader(openedFile));
+//            int i = 0;
+//            while ((strCurrentLine = objReader.readLine()) != null) {
+//                String[] data = strCurrentLine.split(",");
+//
+//                person = new Person(travel(data[1]), travel(data[5]), travel(data[6]), travel(data[7]));
+//
+//                registerP.add(i, person);
+//
+//                i++;
+//            }
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
+//    }
+//
+//    
+//    
+//    public void CreateFile() {
+//        String ubication;
+//        ubication = selectFile();
+//        try {
+//            File myObj = new File(ubication);
+//            if (myObj.createNewFile()) {
+//                System.out.println("File created: " + myObj.getName());
+//            } else {
+//                System.out.println("File already exists.");
+//            }
+//        } catch (IOException e) {
+//            System.out.println("An error occurred.");
+//            e.printStackTrace();
+//        }
+//
+//    }
+//    
+//    
+//    public String insertData() {
+//
+//        String ubication;
+//        ubication = selectFile();
+//
+//        try {
+//            FileWriter myWriter = new FileWriter(ubication);
+//            myWriter.write("Datos de guardado");
+//            myWriter.close();
+//            System.out.println("Successfully wrote to the file.");
+//        } catch (IOException e) {
+//            System.out.println("An error occurred.");
+//            e.printStackTrace();
+//        }
+//
+//        return null;
+//
+//    }
+    public void seeRegion() {
+        System.out.println("────────────────────╣");
+        for (int i = 0; i < registerRegion.length; i++) {
+            if (registerRegion[i] != null) {
+                System.out.println((i + 1) + ")" + registerRegion[i].getGeographicLocation());
+            }
+
+        }
+        System.out.println("────────────────────╣");
+        System.out.println("seleccione la region que desea filtrar");
+        System.out.print("─>");
+    }
+
+    public void groupR() {
+        for (int i = 0; i < registerStudents.length; i++) {
+
+            ramdom[i] = -1;
+
+            System.out.println(ramdom[i]);
+
+        }
+        groupRamdon(0);
+
+    }
+
+}
