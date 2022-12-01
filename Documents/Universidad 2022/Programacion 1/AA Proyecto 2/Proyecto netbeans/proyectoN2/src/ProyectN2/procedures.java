@@ -33,13 +33,6 @@ import javax.mail.internet.MimeMultipart;
 import javax.swing.JOptionPane;
 
 //-----------------------------------------------------------------------------
-
-
-
-
-
-
-
 /**
  *
  * @author james
@@ -65,7 +58,6 @@ public class procedures {
 
     public int Login() {
         int option = 0;
-
         System.out.println("╔═══════════╗");
         System.out.println("║Digite una opcion ║");
         System.out.println("╚═══════════╝");
@@ -80,7 +72,6 @@ public class procedures {
         System.out.print("─>");
 
         option = scanner.nextInt();
-        System.out.println("_____________________________________________________________________________________________________________________________-");
         return option;
 
     }
@@ -88,12 +79,12 @@ public class procedures {
     public int selectMenu() {
         int option = 0;
         System.out.println("╓─────────────────────────────────────╗");
-        System.out.println("║Ordenar listas de estudinates                                ║");
-        System.out.println("║1) Ordenar en orden de alfabetico acendente                  ║");
-        System.out.println("║2) Ordenar en orden de alfabetico decendente                 ║");
-        System.out.println("║3) Ordenar de carnet de forma acendente                      ║");
-        System.out.println("║4) Ordenar de carnet de forma desendente                     ║");
-        System.out.println("║5) Ver lista de estudiantes                                  ║");
+        System.out.println("║Ordenar listas de estudinates                                   ║");
+        System.out.println("║1) Ordenar en orden de alfabetico acendente                     ║");
+        System.out.println("║2) Ordenar en orden de alfabetico decendente                    ║");
+        System.out.println("║3) Ordenar de carnet de forma acendente                         ║");
+        System.out.println("║4) Ordenar de carnet de forma desendente                        ║");
+        System.out.println("║5) Ver lista de estudiantes                                     ║");
         System.out.println("╙─────────────────────────────────────╝");
         System.out.print("─>");
 
@@ -193,10 +184,18 @@ public class procedures {
 
     }
 
+    /**
+     * este metodo funciona para seleccionar el orden del grupo seleccionado
+     *
+     *
+     */
+ 
+
     public int selectGroup() {
+
         System.out.println("         Seleccione una opcion");
         System.out.println("╓────────────────────────╗");
-        System.out.println("║1)Grupos por ubiocacion                ║");
+        System.out.println("║1)Grupos por ubicacion                ║");
         System.out.println("║2)Separar por genero                   ║");
         System.out.println("║2)Grupos ramdom                        ║");
         System.out.println("╙────────────────────────╝");
@@ -205,16 +204,13 @@ public class procedures {
         return selectTypeG;
 
     }
-    
-    
-    
-       public String selectMail(){
+
+    public String selectMail() {
         System.out.println("╓──────────────────────────────╗");
         System.out.println("║1)selecione digite la ubicaion del correo a enviar║");
         System.out.println("╙──────────────────────────────╝");
-              System.out.print("─>");
-         String selectMail= scannerTwo.nextLine();
-    
+        System.out.print("─>");
+        String selectMail = scannerTwo.nextLine();
 
         try {
             sendEmail(selectMail);
@@ -222,8 +218,6 @@ public class procedures {
             Logger.getLogger(procedures.class.getName()).log(Level.SEVERE, null, ex);
         }
         return null;
-        
-
 
     }
 
@@ -283,7 +277,6 @@ public class procedures {
 
             numMax = indic(numMax, count);
         }
-
         if (numMax >= 0) {
             indice(numMax);
         }
@@ -321,8 +314,7 @@ public class procedures {
 
         return indic(numM, count + 1);
     }
-
-    public void CreateFile() {
+    public String CreateFile() {
         String ubication;
         ubication = selectFile();
         try {
@@ -336,6 +328,7 @@ public class procedures {
             System.out.println("An error occurred.");
             e.printStackTrace();
         }
+        return ubication;
 
     }
 
@@ -363,7 +356,6 @@ public class procedures {
                 }
             }
         }
-
         if (selectTypeG > 2) {
             return typeGroup(locationPerson);
         }
@@ -403,13 +395,13 @@ public class procedures {
      * esta funcion esta a puro For e incompleta se encarga de Agrupar
      * estudiantes
      */
-    public void readerData() throws IOException {
-
+    public String readerData() throws IOException {
         System.out.println("seleccione la ubicacion donde se va almacenar los datos");
-        String ubication = selectFile();
-
         indice(0);
+        String ubication=CreateFile(); 
+     
 
+  
         FileWriter myWriter = new FileWriter(ubication);
         seeRegion();
 
@@ -470,9 +462,10 @@ public class procedures {
                 t++;
             }
         }
+        return null;
 
     }
-
+      
     public int selectName() {
 
         System.out.println("Digite el numero de persona para modificar el nombre");
@@ -943,7 +936,6 @@ public class procedures {
         }
 
     }
-
     public void idDescending() {
         fillId();
         Arrays.sort(idArray, Collections.reverseOrder());
@@ -984,9 +976,9 @@ public class procedures {
 
     }
 
-    /**
-     * Asigna los dato a un arreglo para ordenarlos afabeticamente*
-     */
+  /*
+    Asigna los dato a un arreglo para ordenarlos afabeticamente*
+    */
     public void fillAlphaLog() {
 
         for (int j = 0; j < registerStudents.length; j++) {
@@ -1009,6 +1001,7 @@ public class procedures {
     /**
      * reordena los datos en en el arreglo pricipal en orden alfabetico
      *
+     * @return 
      */
     public int listAlphaLog() {
         if (exitAll == true) {
@@ -1046,13 +1039,9 @@ public class procedures {
         return 0;
 
     }
-    
-    
 
-    
-    
-      public String sendEmail(String mail)throws AddressException, MessagingException{
-    
+    public String sendEmail(String mail) throws AddressException, MessagingException {
+
         String email = "progradura2711@gmail.com";
         String password = "mbwjrpshuisqhqde";
         String mailDestination = mail;
@@ -1064,27 +1053,27 @@ public class procedures {
         p.setProperty("mail.smtp.port", "587");
         p.setProperty("mail.smtp.user", email);
         p.setProperty("mail.smtp.auth", "true");
-        
+
         JFileChooser filechooser = new JFileChooser();
         Component g = null;
         int returnVar = filechooser.showOpenDialog(g);
         if (returnVar == JFileChooser.APPROVE_OPTION) {
-            System.out.println("Se envio el archivo: " + 
-            filechooser.getSelectedFile().getName());
+            System.out.println("Se envio el archivo: "
+                    + filechooser.getSelectedFile().getName());
         }
 
         Session session = Session.getDefaultInstance(p);
-        
+
         BodyPart text = new MimeBodyPart();
         text.setText("Buenas, por este medio se le envia el documento con los grupos formados");
-        
+
         BodyPart attach = new MimeBodyPart();
         attach.setDataHandler(new DataHandler(new FileDataSource(filechooser.getSelectedFile())));
         attach.setFileName(filechooser.getSelectedFile().getName());
         MimeMultipart m = new MimeMultipart();
         m.addBodyPart(text);
         m.addBodyPart(attach);
-        
+
         MimeMessage mensaje = new MimeMessage(session);
         mensaje.setFrom(new InternetAddress(email));
         mensaje.addRecipient(Message.RecipientType.TO, new InternetAddress(mailDestination));
@@ -1092,20 +1081,11 @@ public class procedures {
         mensaje.setContent(m);
 
         Transport transport = session.getTransport("smtp");
-        transport.connect(email,password);
+        transport.connect(email, password);
         transport.sendMessage(mensaje, mensaje.getAllRecipients());
         transport.close();
         JOptionPane.showMessageDialog(null, "Correo enviado con exito");
-           return null;
-        }
-    
-    
-    
-    
-    
-    
-    
-    
-    
+        return null;
+    }
 
 }

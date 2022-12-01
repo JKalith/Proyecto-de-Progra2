@@ -43,7 +43,8 @@ public class ProyectoN2 {
                 break;
             }
             case 3: {
-                procedures.readerData();
+              
+                menuGroup();
                 break;
             }
             case 4:
@@ -107,7 +108,9 @@ public class ProyectoN2 {
         return menuCrud();
 
     }
-
+/**
+ * Esta funcion tiene como fin alternar entre los diferentes metodos de la lista
+ **/
     public static void menuList() {
 
         switch (procedures.selectMenu()) {
@@ -137,4 +140,38 @@ public class ProyectoN2 {
 
     }
 
+    public static void menuGroup() throws IOException {
+     
+ switch (procedures.selectGroup()){
+     
+    
+   
+     case 1:
+           procedures.readerData();
+         break;
+ case 2:
+         break;
+ case 3:
+         break;
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ }
+
 }
+
+
+
+
+
+
+
+
+}
+ 
