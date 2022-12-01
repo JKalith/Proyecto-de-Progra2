@@ -7,7 +7,9 @@ package ProyectN2;
 import javax.swing.JFileChooser;
 import ProyectN2.procedures;
 import java.io.IOException;
-
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.mail.MessagingException;
 /**
  *
  * @author james
@@ -31,39 +33,36 @@ public class ProyectoN2 {
 
         switch (procedures.Login()) {
             case 1: {
-                procedures.readerFile();
+                menuList();
 
                 break;
 
             }
             case 2: {
-                
-                
-                
-
+                menuCrud();
                 break;
             }
             case 3: {
+                procedures.readerData();
+                break;
+            }
+            case 4:
+          procedures.selectMail();
+                break;
 
+
+            case 5:
+
+                break;
+            case 6:
+                break;
+
+            case 8:
                 if (procedures.exitLogin(exitAll) == false) {
 
                     return (false);
                 }
                 break;
-            }
-            case 4:
-
-                procedures.readerData();
-
-                break;
-                 
-            case 5:
-     
-                procedures.groupR();
-
-                break;
-            case 6:
-                menuCrud();
 
         }
         return menu();
@@ -101,11 +100,40 @@ public class ProyectoN2 {
                 break;
             case 7:
                 procedures.seeAllData(0);
-break;
+                break;
             case 8:
                 return 0;
         }
         return menuCrud();
+
+    }
+
+    public static void menuList() {
+
+        switch (procedures.selectMenu()) {
+
+            case 1:
+                procedures.alphabetAcending();
+                procedures.seeAllStudents();
+                break;
+            case 2:
+                procedures.alphabetDescending();
+                procedures.seeAllStudents();
+                break;
+            case 3:
+                procedures.idAcending();
+                procedures.seeAllStudents();
+                break;
+            case 4:
+                procedures.idDescending();
+                procedures.seeAllStudents();
+
+                break;
+            case 5:
+
+                break;
+
+        }
 
     }
 

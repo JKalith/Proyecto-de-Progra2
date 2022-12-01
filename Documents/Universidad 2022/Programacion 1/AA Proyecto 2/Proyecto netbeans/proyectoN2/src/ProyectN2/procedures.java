@@ -7,12 +7,38 @@ package ProyectN2;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
-import java.nio.charset.StandardCharsets;
 import java.util.Scanner;
 import ClassProyect.Student;
 import java.io.File;
 import java.io.FileWriter;
+import java.util.Arrays;
+import java.util.Collections;
 import javax.swing.JFileChooser;
+import java.awt.Component;
+import java.util.Properties;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.activation.DataHandler;
+import javax.activation.FileDataSource;
+import javax.mail.BodyPart;
+import javax.mail.Message;
+import javax.mail.MessagingException;
+import javax.mail.Session;
+import javax.mail.Transport;
+import javax.mail.internet.AddressException;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeBodyPart;
+import javax.mail.internet.MimeMessage;
+import javax.mail.internet.MimeMultipart;
+import javax.swing.JOptionPane;
+
+//-----------------------------------------------------------------------------
+
+
+
+
+
+
 
 /**
  *
@@ -33,24 +59,46 @@ public class procedures {
     public Student registerR[] = new Student[18];
     public String numStudent = null;
     public int ramdom[] = new int[18];
-    static procedures main = new procedures();
+    public String[] alphabetArray = new String[18];
+    public String idArray[] = new String[18];
+    public Student registerP[] = new Student[18];
 
     public int Login() {
         int option = 0;
+
         System.out.println("╔═══════════╗");
-        System.out.println("║Digite una opcion  ║");
+        System.out.println("║Digite una opcion ║");
         System.out.println("╚═══════════╝");
         System.out.println("╓──────────────────────────╗");
-        System.out.println("║1) Desea otro txt                            ║");
-        System.out.println("║2)                                           ║");
-        System.out.println("║3) Salir del programa                        ║");
-        System.out.println("║4) Ordenar grupos                            ║");
-        System.out.println("║5)                                           ║");
-        System.out.println("║6) Editar estudiantes                        ║");
+        System.out.println("║1) Ver lista de estudiantes                 ║");
+        System.out.println("║2) Editar estudiantes                       ║");
+        System.out.println("║3) Ordenar grupos                           ║");
+        System.out.println("║4) Gmail                                    ║");
+        System.out.println("║5) Guia de usuario                          ║");
+        System.out.println("║8) Salir del programa                       ║");
         System.out.println("╙──────────────────────────╝");
         System.out.print("─>");
 
         option = scanner.nextInt();
+        System.out.println("_____________________________________________________________________________________________________________________________-");
+        return option;
+
+    }
+
+    public int selectMenu() {
+        int option = 0;
+        System.out.println("╓─────────────────────────────────────╗");
+        System.out.println("║Ordenar listas de estudinates                                ║");
+        System.out.println("║1) Ordenar en orden de alfabetico acendente                  ║");
+        System.out.println("║2) Ordenar en orden de alfabetico decendente                 ║");
+        System.out.println("║3) Ordenar de carnet de forma acendente                      ║");
+        System.out.println("║4) Ordenar de carnet de forma desendente                     ║");
+        System.out.println("║5) Ver lista de estudiantes                                  ║");
+        System.out.println("╙─────────────────────────────────────╝");
+        System.out.print("─>");
+
+        option = scanner.nextInt();
+
         return option;
 
     }
@@ -88,6 +136,12 @@ public class procedures {
         return (exitLogin(exitAll));
     }
 
+    /**
+     *
+     * solicita el nombre del usuario y coloca la lista en orden alfabetico
+     * llama al metodo para solicitar los datos
+     *
+     */
     public void nameUser() {
         System.out.println("ʕ•ᴥ•ʔ -¡Hola Bienvenido a nuestro programa!- ʕ•ᴥ•ʔ");
         System.out.println("____________________________");
@@ -98,7 +152,9 @@ public class procedures {
 
         System.out.println("Bienvenido " + userName + "ᵔᴥᵔ");
         System.out.println("Selecciona el archvo que deseas leer");
+
         readerFile();
+        alphabetLog();
 
     }
 
@@ -118,6 +174,56 @@ public class procedures {
         int option = scanner.nextInt();
         count = 0;
         return option;
+
+    }
+
+    /**
+     * esta funcion tiene como uso servir de menu para los grupos
+     *
+     */
+    public int selectTypeG() {
+        System.out.println("         Seleccione una opcion");
+        System.out.println("╓────────────────────────╗");
+        System.out.println("║Digite 1 si desea los grupos por lista   ║");
+        System.out.println("║Digite 2 si desea los grupos Ramdom      ║");
+        System.out.println("╙────────────────────────╝");
+        int selectTypeG = 0;
+        selectTypeG = scanner.nextInt();
+        return selectTypeG;
+
+    }
+
+    public int selectGroup() {
+        System.out.println("         Seleccione una opcion");
+        System.out.println("╓────────────────────────╗");
+        System.out.println("║1)Grupos por ubiocacion                ║");
+        System.out.println("║2)Separar por genero                   ║");
+        System.out.println("║2)Grupos ramdom                        ║");
+        System.out.println("╙────────────────────────╝");
+        int selectTypeG = 0;
+        selectTypeG = scanner.nextInt();
+        return selectTypeG;
+
+    }
+    
+    
+    
+       public String selectMail(){
+        System.out.println("╓──────────────────────────────╗");
+        System.out.println("║1)selecione digite la ubicaion del correo a enviar║");
+        System.out.println("╙──────────────────────────────╝");
+              System.out.print("─>");
+         String selectMail= scannerTwo.nextLine();
+    
+
+        try {
+            sendEmail(selectMail);
+        } catch (MessagingException ex) {
+            Logger.getLogger(procedures.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+        
+
 
     }
 
@@ -216,21 +322,27 @@ public class procedures {
         return indic(numM, count + 1);
     }
 
-    public int selectTypeG() {
-
-        System.out.println(" ___________________________________________");
-        System.out.println("┊Digite 1 si desea los grupos por lista     ┊");
-        System.out.println("┊Digite 2 si desea los grupos Ramdom        ┊");
-        System.out.println("┊___________________________________________┊");
-        int selectTypeG = 0;
-        selectTypeG = scanner.nextInt();
-        return selectTypeG;
+    public void CreateFile() {
+        String ubication;
+        ubication = selectFile();
+        try {
+            File myObj = new File(ubication);
+            if (myObj.createNewFile()) {
+                System.out.println("File created: " + myObj.getName());
+            } else {
+                System.out.println("File already exists.");
+            }
+        } catch (IOException e) {
+            System.out.println("An error occurred.");
+            e.printStackTrace();
+        }
 
     }
 
     public int typeGroup(int locationPerson) {
         int countRegisterR = 0;
         int selectTypeG = selectTypeG();
+
         exitAll = true;
         if (selectTypeG == 1) {
             for (int i = 0; i < registerStudents.length; i++) {
@@ -298,7 +410,6 @@ public class procedures {
 
         indice(0);
 
-        int t = 0;
         FileWriter myWriter = new FileWriter(ubication);
         seeRegion();
 
@@ -308,7 +419,6 @@ public class procedures {
         //llamar a un metodo que inicialice datos
         typeGroup(locationPerson);
         int countRegisterR = groupZize();
-//____________________________________________________________________________________________________
 
         int groupSelect = sizeGroup();
         boolean var = true;
@@ -352,7 +462,7 @@ public class procedures {
 
         System.out.println("─────────────────────────────────────────╣");
 
-        t = 0;
+        int t = 0;
         for (int i = 0; i < registerStudents.length; i++) {
             if (registerRegion[locationPerson].getGeographicLocation().equalsIgnoreCase(registerStudents[i].getGeographicLocation())) {
 
@@ -669,9 +779,7 @@ public class procedures {
             int x;
 
             x = generateRamdon(var, count);
-
             registerRamdomS[count] = registerStudents[x];
-            System.out.println(registerRamdomS[count]);
             count++;
             return groupRamdon(count);
         }
@@ -694,7 +802,6 @@ public class procedures {
             }
             i++;
         }
-        System.out.println(countVar);;
         if (ramdom[countVar] == -1) {
             ramdom[countVar] = generateR;
 
@@ -711,66 +818,6 @@ public class procedures {
 
     }
 
-//     public void readerFile() {
-//        String openedFile = selectFile();
-//        BufferedReader objReader = null;
-//        try {
-//            String strCurrentLine;
-//
-//            objReader = new BufferedReader(new FileReader(openedFile));
-//            int i = 0;
-//            while ((strCurrentLine = objReader.readLine()) != null) {
-//                String[] data = strCurrentLine.split(",");
-//
-//                person = new Person(travel(data[1]), travel(data[5]), travel(data[6]), travel(data[7]));
-//
-//                registerP.add(i, person);
-//
-//                i++;
-//            }
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
-//    }
-//
-//    
-//    
-//    public void CreateFile() {
-//        String ubication;
-//        ubication = selectFile();
-//        try {
-//            File myObj = new File(ubication);
-//            if (myObj.createNewFile()) {
-//                System.out.println("File created: " + myObj.getName());
-//            } else {
-//                System.out.println("File already exists.");
-//            }
-//        } catch (IOException e) {
-//            System.out.println("An error occurred.");
-//            e.printStackTrace();
-//        }
-//
-//    }
-//    
-//    
-//    public String insertData() {
-//
-//        String ubication;
-//        ubication = selectFile();
-//
-//        try {
-//            FileWriter myWriter = new FileWriter(ubication);
-//            myWriter.write("Datos de guardado");
-//            myWriter.close();
-//            System.out.println("Successfully wrote to the file.");
-//        } catch (IOException e) {
-//            System.out.println("An error occurred.");
-//            e.printStackTrace();
-//        }
-//
-//        return null;
-//
-//    }
     public void seeRegion() {
         System.out.println("────────────────────╣");
         for (int i = 0; i < registerRegion.length; i++) {
@@ -786,14 +833,279 @@ public class procedures {
 
     public void groupR() {
         for (int i = 0; i < registerStudents.length; i++) {
-
             ramdom[i] = -1;
-
-            System.out.println(ramdom[i]);
-
         }
         groupRamdon(0);
 
     }
+
+    /**
+     * Este metodo funciona para colocar los nombres en orden alfabetico de
+     * forma acendente
+     *
+     *
+     */
+    public void alphabetAcending() {
+        fillAlphabet();
+        Arrays.sort(alphabetArray);
+        alphabetRegister();
+        listAlphabet();
+
+    }
+
+    public void alphabetDescending() {
+        fillAlphabet();
+        Arrays.sort(alphabetArray, Collections.reverseOrder());
+        alphabetRegister();
+        listAlphabet();
+
+    }
+
+    /**
+     * Asigna los dato a un arreglo para ordenarlos afabeticamente*
+     */
+    public void fillAlphabet() {
+
+        for (int j = 0; j < registerStudents.length; j++) {
+            alphabetArray[j] = registerStudents[j].getName();
+
+        }
+    }
+
+    /**
+     * Este funcion tiene como fin asignar datos a otro arreglo sirve de puente
+     * paera unir 2 funciones
+     *
+     */
+    public void alphabetRegister() {
+        for (int i = 0; i < registerStudents.length; i++) {
+            registerR[i] = registerStudents[i];
+        }
+    }
+
+    /**
+     * reordena los datos en en el arreglo pricipal en orden alfabetico
+     *
+     */
+    public int listAlphabet() {
+        if (exitAll == true) {
+            count = 0;
+            exitAll = false;
+        }
+        for (int i = 0; i < registerR.length; i++) {
+            if (alphabetArray[count].equals(registerR[i].getName())) {
+
+                registerP[count] = registerR[i];
+                break;
+            }
+        }
+        count++;
+        if (count == 18) {
+            for (int i = 0; i < registerR.length; i++) {
+                registerR[i] = null;
+            }
+            count = 0;
+            return 0;
+        }
+        return listAlphabet();
+
+    }
+
+    public void idAcending() {
+
+        fillId();
+        Arrays.sort(idArray);
+        idRegister();
+        listId();
+
+    }
+
+    /**
+     * Asigna los dato a un arreglo para ordenarlos afabeticamente*
+     */
+    public void fillId() {
+        for (int j = 0; j < registerStudents.length; j++) {
+            idArray[j] = null;
+        }
+        for (int j = 0; j < registerStudents.length; j++) {
+            idArray[j] = registerStudents[j].getIdStudent();
+        }
+    }
+
+    /**
+     * Este funcion tiene como fin asignar datos a otro arreglo sirve de puente
+     * paera unir 2 funciones
+     *
+     */
+    public void idRegister() {
+        for (int i = 0; i < registerStudents.length; i++) {
+            registerR[i] = registerStudents[i];
+        }
+
+    }
+
+    public void idDescending() {
+        fillId();
+        Arrays.sort(idArray, Collections.reverseOrder());
+        idRegister();
+        listId();
+    }
+
+    public int listId() {
+        if (exitAll == true) {
+            count = 0;
+            exitAll = false;
+        }
+        for (int i = 0; i < registerR.length; i++) {
+
+            if (idArray[count].equals(registerR[i].getIdStudent())) {
+
+                registerP[count] = registerR[i];
+                break;
+            }
+        }
+        count++;
+        if (count == 18) {
+            for (int i = 0; i < registerR.length; i++) {
+                registerR[i] = null;
+            }
+            count = 0;
+            return 0;
+        }
+        return listId();
+
+    }
+
+    public void alphabetLog() {
+        fillAlphaLog();
+        Arrays.sort(alphabetArray);
+        alphaRegLog();
+        listAlphaLog();
+
+    }
+
+    /**
+     * Asigna los dato a un arreglo para ordenarlos afabeticamente*
+     */
+    public void fillAlphaLog() {
+
+        for (int j = 0; j < registerStudents.length; j++) {
+            alphabetArray[j] = registerStudents[j].getName();
+
+        }
+    }
+
+    /**
+     * Este funcion tiene como fin asignar datos a otro arreglo sirve de puente
+     * paera unir 2 funciones
+     *
+     */
+    public void alphaRegLog() {
+        for (int i = 0; i < registerStudents.length; i++) {
+            registerR[i] = registerStudents[i];
+        }
+    }
+
+    /**
+     * reordena los datos en en el arreglo pricipal en orden alfabetico
+     *
+     */
+    public int listAlphaLog() {
+        if (exitAll == true) {
+            count = 0;
+            exitAll = false;
+        }
+        for (int i = 0; i < registerR.length; i++) {
+            if (alphabetArray[count].equals(registerR[i].getName())) {
+
+                registerStudents[count] = registerR[i];
+                break;
+            }
+        }
+        count++;
+        if (count == 18) {
+            for (int i = 0; i < registerR.length; i++) {
+                registerR[i] = null;
+            }
+            count = 0;
+            return 0;
+        }
+        return listAlphaLog();
+
+    }
+
+    public int seeAllStudents() {
+
+        for (int i = 0; i < idArray.length; i++) {
+            System.out.println(idArray[i]);
+        }
+        System.out.println("_______________________________________________________________________");
+        for (int i = 0; i < registerStudents.length; i++) {
+            System.out.println("Num " + i + ")" + registerP[i]);
+        }
+        return 0;
+
+    }
+    
+    
+
+    
+    
+      public String sendEmail(String mail)throws AddressException, MessagingException{
+    
+        String email = "progradura2711@gmail.com";
+        String password = "mbwjrpshuisqhqde";
+        String mailDestination = mail;
+
+        Properties p = new Properties();
+        p.put("mail.smtp.host", "smtp.gmail.com");
+        p.setProperty("mail.smtp.starttls.enable", "true");
+        p.put("mail.smtp.ssl.trust", "smtp.gmail.com");
+        p.setProperty("mail.smtp.port", "587");
+        p.setProperty("mail.smtp.user", email);
+        p.setProperty("mail.smtp.auth", "true");
+        
+        JFileChooser filechooser = new JFileChooser();
+        Component g = null;
+        int returnVar = filechooser.showOpenDialog(g);
+        if (returnVar == JFileChooser.APPROVE_OPTION) {
+            System.out.println("Se envio el archivo: " + 
+            filechooser.getSelectedFile().getName());
+        }
+
+        Session session = Session.getDefaultInstance(p);
+        
+        BodyPart text = new MimeBodyPart();
+        text.setText("Buenas, por este medio se le envia el documento con los grupos formados");
+        
+        BodyPart attach = new MimeBodyPart();
+        attach.setDataHandler(new DataHandler(new FileDataSource(filechooser.getSelectedFile())));
+        attach.setFileName(filechooser.getSelectedFile().getName());
+        MimeMultipart m = new MimeMultipart();
+        m.addBodyPart(text);
+        m.addBodyPart(attach);
+        
+        MimeMessage mensaje = new MimeMessage(session);
+        mensaje.setFrom(new InternetAddress(email));
+        mensaje.addRecipient(Message.RecipientType.TO, new InternetAddress(mailDestination));
+        mensaje.setSubject("Archivo con los grupos formados");
+        mensaje.setContent(m);
+
+        Transport transport = session.getTransport("smtp");
+        transport.connect(email,password);
+        transport.sendMessage(mensaje, mensaje.getAllRecipients());
+        transport.close();
+        JOptionPane.showMessageDialog(null, "Correo enviado con exito");
+           return null;
+        }
+    
+    
+    
+    
+    
+    
+    
+    
+    
 
 }
