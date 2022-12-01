@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package ProyectN2;
 
 import java.io.BufferedReader;
@@ -35,7 +31,10 @@ import javax.swing.JOptionPane;
 //-----------------------------------------------------------------------------
 /**
  *
- * @author james
+ * @author James Arias Avalos
+ * @author Diego Herrera López Esta clase contiene todos lo metodos para la
+ * ejecucion del programa, ya que cada metodo tiene una funcion en especifico
+ * para cada seccion que tiene este programa.
  */
 public class procedures {
 
@@ -56,19 +55,24 @@ public class procedures {
     public String idArray[] = new String[18];
     public Student registerP[] = new Student[18];
 
-    public int Login() {
+    /**
+     *
+     * @return Esta función se encarga de mostrar el menu principal, donde
+     * aparecen diferes opciones para el usuario.
+     */
+    public int login() {
         int option = 0;
         System.out.println("╔═══════════╗");
         System.out.println("║Digite una opcion ║");
         System.out.println("╚═══════════╝");
-        System.out.println("╓──────────────────────────╗");
+        System.out.println("╓───────────────────────────╗");
         System.out.println("║1) Ver lista de estudiantes                 ║");
         System.out.println("║2) Editar estudiantes                       ║");
         System.out.println("║3) Ordenar grupos                           ║");
-        System.out.println("║4) Gmail                                    ║");
+        System.out.println("║4) Enviar gmail                             ║");
         System.out.println("║5) Guia de usuario                          ║");
         System.out.println("║8) Salir del programa                       ║");
-        System.out.println("╙──────────────────────────╝");
+        System.out.println("╙───────────────────────────╝");
         System.out.print("─>");
 
         option = scanner.nextInt();
@@ -76,16 +80,21 @@ public class procedures {
 
     }
 
+    /**
+     * @return Esta función aparece cuando en el menu principal el usuario
+     * selecciona ver lista de estudiantes, entonces se desplega estas otras
+     * opciones para ordenar esa lista.
+     */
     public int selectMenu() {
         int option = 0;
-        System.out.println("╓─────────────────────────────────────╗");
-        System.out.println("║Ordenar listas de estudinates                                   ║");
-        System.out.println("║1) Ordenar en orden de alfabetico acendente                     ║");
-        System.out.println("║2) Ordenar en orden de alfabetico decendente                    ║");
-        System.out.println("║3) Ordenar de carnet de forma acendente                         ║");
-        System.out.println("║4) Ordenar de carnet de forma desendente                        ║");
-        System.out.println("║5) Ver lista de estudiantes                                     ║");
-        System.out.println("╙─────────────────────────────────────╝");
+        System.out.println("╓────────────────────────────────╗");
+        System.out.println("║Ordenar listas de estudinates                       ║");
+        System.out.println("║1) Ordenar en orden de alfabetico acendente         ║");
+        System.out.println("║2) Ordenar en orden de alfabetico decendente        ║");
+        System.out.println("║3) Ordenar de carnet de forma acendente             ║");
+        System.out.println("║4) Ordenar de carnet de forma desendente            ║");
+        System.out.println("║5) Ver lista de estudiantes                         ║");
+        System.out.println("╙────────────────────────────────╝");
         System.out.print("─>");
 
         option = scanner.nextInt();
@@ -94,22 +103,29 @@ public class procedures {
 
     }
 
+    /**
+     *
+     * @param exitAll
+     * @return Este sirve para salir del programa o bien para devolverte al
+     * menu, eso con la diferencia de que seleccione si o no.
+     *
+     */
     public Boolean exitLogin(boolean exitAll) {
         boolean exitProgram;
         System.out.println("¿Desea salir del programa?");
         System.out.println("____________________________");
-        System.out.println("digite si/no: ");
+        System.out.println("Escriba si/no: ");
         String exit = scannerTwo.nextLine();
         if (exit.equalsIgnoreCase("si")) {
             exitAll = false;
-            System.out.println("Gracias " + userName + " por usar Sibajas program");
+            System.out.println("Gracias " + userName + " por usar Sibajitas program");
             System.out.println("Feliz★* 。 • ˚ ˚ ˛ ˚ ˛ •");
             System.out.println("•。★Navidad★ 。* 。");
             System.out.println("° 。 ° ˛˚˛ * _Π_____*。*˚");
             System.out.println("˚ ˛ •˛•˚ */______/~＼。˚ ˚ ");
             System.out.println(" ˛ •˛• ˚ ｜ 田田 ｜門｜ ˚ ˚");
             System.out.println("Un feliz año nuevo");
-            System.out.println("ha salido correctamente del programa");
+            System.out.println("Ha salido correctamente del programa");
             return (exitAll);
         } else {
             if ((exit.equalsIgnoreCase("no"))) {
@@ -129,8 +145,9 @@ public class procedures {
 
     /**
      *
-     * solicita el nombre del usuario y coloca la lista en orden alfabetico
-     * llama al metodo para solicitar los datos
+     * solicita el nombre del usuario y te permeti seleccionar un archivo,
+     * coloca la lista en orden alfabetico llama al metodo para solicitar los
+     * datos.
      *
      */
     public void nameUser() {
@@ -149,17 +166,24 @@ public class procedures {
 
     }
 
+    /**
+     *
+     * @return Esta función aparece cuando en el menu principal el usuario
+     * selecciona editar estudiantes, entonces se desplega estas otras opciones
+     * para editar el nombre, email, carnet, hasta remplazar y borrar
+     * estudiantes.
+     */
     public int crudMenu() {
         System.out.println("         Seleccione una opcion");
         System.out.println("╓────────────────────────╗");
-        System.out.println("║1)Editar el nombre                       ║");
-        System.out.println("║2)Editar el email                        ║");
-        System.out.println("║3)Editar el carnet                       ║");
-        System.out.println("║4)Editar el genero                       ║");
-        System.out.println("║5)Borrar Estudiante                      ║");
-        System.out.println("║6)Agregar o Remplazar Estudiante         ║");
-        System.out.println("║7)Ver todos los estudiantes              ║");
-        System.out.println("║8)Salir al menu principal                ║");
+        System.out.println("║1)Editar el nombre                     ║");
+        System.out.println("║2)Editar el email                      ║");
+        System.out.println("║3)Editar el carnet                     ║");
+        System.out.println("║4)Editar el genero                     ║");
+        System.out.println("║5)Borrar Estudiante                    ║");
+        System.out.println("║6)Agregar o Remplazar Estudiante       ║");
+        System.out.println("║7)Ver todos los estudiantes            ║");
+        System.out.println("║8)Salir al menu principal              ║");
         System.out.println("╙────────────────────────╝");
         System.out.print("─>");
         int option = scanner.nextInt();
@@ -169,15 +193,16 @@ public class procedures {
     }
 
     /**
-     * esta funcion tiene como uso servir de menu para los grupos
      *
+     * @return Esta funcion tiene como uso servir de menu para los grupos, tanto
+     * pot lista o ramdom.
      */
     public int selectTypeG() {
         System.out.println("         Seleccione una opcion");
-        System.out.println("╓────────────────────────╗");
-        System.out.println("║Digite 1 si desea los grupos por lista   ║");
-        System.out.println("║Digite 2 si desea los grupos Ramdom      ║");
-        System.out.println("╙────────────────────────╝");
+        System.out.println("╓───────────────────────────╗");
+        System.out.println("║Digite 1 si desea los grupos por lista      ║");
+        System.out.println("║Digite 2 si desea los grupos Ramdom         ║");
+        System.out.println("╙───────────────────────────╝");
         int selectTypeG = 0;
         selectTypeG = scanner.nextInt();
         return selectTypeG;
@@ -185,17 +210,15 @@ public class procedures {
     }
 
     /**
-     * este metodo funciona para seleccionar el orden del grupo seleccionado
-     *
-     *
+     * @return Este metodo aparece cuando el usuario selecciona ordenar grupos y
+     * despues aparecen estas opciones para seleccionar el orden del grupo
+     * seleccionado.
      */
- 
-
     public int selectGroup() {
 
         System.out.println("         Seleccione una opcion");
         System.out.println("╓────────────────────────╗");
-        System.out.println("║1)Grupos por ubicacion                ║");
+        System.out.println("║1)Grupos por ubicacion                 ║");
         System.out.println("║2)Separar por genero                   ║");
         System.out.println("║2)Grupos ramdom                        ║");
         System.out.println("╙────────────────────────╝");
@@ -205,10 +228,15 @@ public class procedures {
 
     }
 
+    /**
+     *
+     * @return Esta función sirve para escribir el correo al que se le quiere
+     * mandar el archivo txt.
+     */
     public String selectMail() {
-        System.out.println("╓──────────────────────────────╗");
-        System.out.println("║1)selecione digite la ubicaion del correo a enviar║");
-        System.out.println("╙──────────────────────────────╝");
+        System.out.println("╓────────────────────────────────╗");
+        System.out.println("║1)Escriba la ubicaion del correo a enviar           ║");
+        System.out.println("╙────────────────────────────────╝");
         System.out.print("─>");
         String selectMail = scannerTwo.nextLine();
 
@@ -221,6 +249,11 @@ public class procedures {
 
     }
 
+    /**
+     *
+     * @return Esta función sirve para mostrar la ubicación del archivo y el
+     * archivo seleccionado.
+     */
     public String selectFile() {
         String ubicationFile = null;
 
@@ -241,6 +274,10 @@ public class procedures {
         return (ubicationFile);
     }
 
+    /**
+     * Esta función sirve ver los estudiantes que aparecen en el documento con
+     * sus nombres, carnet, ubicación y genero.
+     */
     public void readerFile() {
         String openedFile = selectFile();
         BufferedReader objReader = null;
@@ -264,7 +301,12 @@ public class procedures {
         }
     }
 
-    public int indice(int numMax) {
+    /**
+     *
+     * @param numMax
+     * @return Esta función sirve como auxiliar para el metodo recursivo indixR.
+     */
+    public int index(int numMax) {
 
         count = 0;
 
@@ -275,17 +317,24 @@ public class procedures {
 
         if (numMax >= 0) {
 
-            numMax = indic(numMax, count);
+            numMax = indixR(numMax, count);
         }
         if (numMax >= 0) {
-            indice(numMax);
+            index(numMax);
         }
 
         return -2;
 
     }
 
-    public int indic(int numM, int count) {
+    /**
+     *
+     * @param numM
+     * @param count
+     * @return Esta función sirve para mostar las ubicaciones geograficas de los
+     * estudiantes y almacenar dichas ubicaciones.
+     */
+    public int indixR(int numM, int count) {
         if (numM == 0) {
             if (registerRegion[count] == null) {
                 registerRegion[count] = registerStudents[numM];
@@ -293,7 +342,7 @@ public class procedures {
                  * System.out.println("Las ubicaciones actuales son " +
                  * registerRegion[count].getGeographicLocation()); *
                  */
-                return indice(-1);
+                return index(-1);
             }
         }
         if (registerRegion[count] == null) {
@@ -303,18 +352,24 @@ public class procedures {
              * registerRegion[count].getGeographicLocation()); este sout es para
              * mostrar ubicaciones *
              */
-            return indice(numM);
+            return index(numM);
         }
-        if (registerStudents[numM].getGeographicLocation().equals(registerRegion[count].getGeographicLocation())) {
+        if (registerStudents[numM].getGeographicLocation().equals(registerRegion[count].
+                getGeographicLocation())) {
             if (numM == 0) {
-                return indice(-1);
+                return index(-1);
             }
-            return indice(numM);
+            return index(numM);
         }
 
-        return indic(numM, count + 1);
+        return indixR(numM, count + 1);
     }
-    public String CreateFile() {
+
+    /**
+     *
+     * @return Esta función sirve para crear y guardar el documento.
+     */
+    public String createFile() {
         String ubication;
         ubication = selectFile();
         try {
@@ -332,14 +387,22 @@ public class procedures {
 
     }
 
-    public int typeGroup(int locationPerson) {
+    /**
+     *
+     * @param locationPerson
+     * @return Sirve para recibir el tipo de grupo por ubicación ramdom o por
+     * lista, segun el dato que recibe va a almacenar los estudiantes de x
+     * ubicación geografica.
+     */
+    public int saveLocationG(int locationPerson) {
         int countRegisterR = 0;
         int selectTypeG = selectTypeG();
 
         exitAll = true;
         if (selectTypeG == 1) {
             for (int i = 0; i < registerStudents.length; i++) {
-                if (registerRegion[locationPerson].getGeographicLocation().equalsIgnoreCase(registerStudents[i].getGeographicLocation())) {
+                if (registerRegion[locationPerson].getGeographicLocation().
+                        equalsIgnoreCase(registerStudents[i].getGeographicLocation())) {
                     registerR[countRegisterR] = registerStudents[i];
                     countRegisterR++;
                 }
@@ -350,24 +413,30 @@ public class procedures {
             groupR();
 
             for (int i = 0; i < registerStudents.length; i++) {
-                if (registerRegion[locationPerson].getGeographicLocation().equalsIgnoreCase(registerRamdomS[i].getGeographicLocation())) {
+                if (registerRegion[locationPerson].getGeographicLocation().
+                        equalsIgnoreCase(registerRamdomS[i].getGeographicLocation())) {
                     registerR[countRegisterR] = registerRamdomS[i];
                     countRegisterR++;
                 }
             }
         }
         if (selectTypeG > 2) {
-            return typeGroup(locationPerson);
+            return saveLocationG(locationPerson);
         }
         return 0;
 
     }
 
+    /**
+     *
+     * @return Esta función sirve para mostrar la cantidad de estudiantes y
+     * pedir la cantidad de estudiantes para formar los grupos.
+     */
     public int sizeGroup() {
         int countRegisterR = groupZize();
-        System.out.println("la cantidad de estudiantes que hay es de " + countRegisterR);
+        System.out.println("La cantidad de estudiantes que hay es de: " + countRegisterR);
 
-        System.out.println("digite en la porcion de grupos que desea realizar");
+        System.out.println("Digite la porcion de grupos que desea realizar");
         System.out.print("─>");
         int groupSelect = scanner.nextInt();
 
@@ -375,6 +444,11 @@ public class procedures {
 
     }
 
+    /**
+     *
+     * @return Sirve de contador para conocer el limite de personas registradas
+     * en una región.
+     */
     public int groupZize() {
         if (exitAll == true) {
             count = 0;
@@ -392,16 +466,15 @@ public class procedures {
     }
 
     /**
-     * esta funcion esta a puro For e incompleta se encarga de Agrupar
-     * estudiantes
+     *
+     * @return @throws IOException Esta funcion se encarga de agrupar a los
+     * estudiantes.
      */
     public String readerData() throws IOException {
         System.out.println("seleccione la ubicacion donde se va almacenar los datos");
-        indice(0);
-        String ubication=CreateFile(); 
-     
+        index(0);
+        String ubication = createFile();
 
-  
         FileWriter myWriter = new FileWriter(ubication);
         seeRegion();
 
@@ -409,7 +482,7 @@ public class procedures {
         locationPerson = locationPerson - 1;
 
         //llamar a un metodo que inicialice datos
-        typeGroup(locationPerson);
+        saveLocationG(locationPerson);
         int countRegisterR = groupZize();
 
         int groupSelect = sizeGroup();
@@ -465,7 +538,12 @@ public class procedures {
         return null;
 
     }
-      
+
+    /**
+     *
+     * @return Esta función sirve para selecionar un estudiantes a la cual se le
+     * va a modificar el nombre.
+     */
     public int selectName() {
 
         System.out.println("Digite el numero de persona para modificar el nombre");
@@ -474,6 +552,12 @@ public class procedures {
         return positionName - 1;
     }
 
+    /**
+     *
+     * @param c
+     * @return Esta función sirve para mostrar al estudnate seleccionado que se
+     * le va a cambiar el nombre.
+     */
     public int seePersonName(int c) {
         if (count != registerStudents.length) {
             System.out.println("╠──────────────────────────────╣");
@@ -488,6 +572,11 @@ public class procedures {
         return (0);
     }
 
+    /**
+     *
+     * @return Esta función sirve para editar el nombre del estudiante
+     * seleccionado.
+     */
     public String modifytName() {
         int numStudent = selectName();
         System.out.println("╠──────────────────────────────╣");
@@ -502,6 +591,11 @@ public class procedures {
         return null;
     }
 
+    /**
+     *
+     * @return Esta función sirve para seleccionar una persona a la cual se le
+     * quiere modicar el Email.
+     */
     public int selectEmail() {
         count = 0;
         seePersonName(count);
@@ -510,6 +604,12 @@ public class procedures {
         return positionEmail - 1;
     }
 
+    /**
+     *
+     * @param c
+     * @return Esta función sirve para mostrar al estudiante seleccionado que se
+     * le va a cambiar el Email.
+     */
     public int seePersonEmail(int c) {
         if (count != registerStudents.length) {
             System.out.println("╠──────────────────────────────╣");
@@ -524,6 +624,11 @@ public class procedures {
         return (0);
     }
 
+    /**
+     *
+     * @return Esta función sirve para editar el Email del estudiante
+     * seleccionado.
+     */
     public String modifytEmail() {
         int numStudent = selectEmail();
         System.out.println("╠──────────────────────────────╣");
@@ -538,6 +643,11 @@ public class procedures {
         return null;
     }
 
+    /**
+     *
+     * @return Esta función sirve para selecionar al estudiante que se le quiera
+     * modificar el genero.
+     */
     public int selectGender() {
         count = 0;
         seePersonName(count);
@@ -547,6 +657,12 @@ public class procedures {
         return positionGender - 1;
     }
 
+    /**
+     *
+     * @param c
+     * @return Esta función sirve para mostrar al estudiante seleccionada que se
+     * le va a cambiar el genero.
+     */
     public int seePersonGender(int c) {
         if (count != registerStudents.length) {
             System.out.println("╠──────────────────────────────╣");
@@ -561,6 +677,11 @@ public class procedures {
         return (0);
     }
 
+    /**
+     *
+     * @return Esta función sirve para modicar el genero del estudiante
+     * seleccionado.
+     */
     public String modifytGender() {
         int numStudent = selectGender();
         System.out.println("╠──────────────────────────────╣");
@@ -575,6 +696,11 @@ public class procedures {
         return null;
     }
 
+    /**
+     *
+     * @return Esta función sirve para seleccionar al estudiante que se le
+     * quiere modificar el carnet.
+     */
     public int selectIdStudent() {
         count = 0;
         seeIdStudent(count);
@@ -583,6 +709,12 @@ public class procedures {
         return positionIdStudent - 1;
     }
 
+    /**
+     *
+     * @param c
+     * @return Esta función sirve para mostrar al estudiante que se le va a
+     * cambiar el carnet.
+     */
     public int seeIdStudent(int c) {
         if (count != registerStudents.length) {
             System.out.println("╠──────────────────────────────╣");
@@ -597,6 +729,11 @@ public class procedures {
         return (0);
     }
 
+    /**
+     *
+     * @return Esta función sirve para modificar el carnet del estudiante
+     * seleccionado.
+     */
     public String modifyIdStudent() {
         int numStudent = selectIdStudent();
         System.out.println("╠──────────────────────────────╣");
@@ -611,6 +748,10 @@ public class procedures {
         return null;
     }
 
+    /**
+     * Esta función sirve para seleccionar un estudiante al que se le quiera
+     * elimiar de la lista.
+     */
     public void deleteAllData() {
         count = 0;
         seePersonName(count);
@@ -626,6 +767,12 @@ public class procedures {
         System.out.println("Se elimino correctamente");
     }
 
+    /**
+     *
+     * @param count
+     * @return Sirve para ver todos los datos de los estudiantes y ver si se
+     * elimino el estudiante.
+     */
     public int seeAllData(int count) {
 
         if (count != registerStudents.length) {
@@ -661,6 +808,11 @@ public class procedures {
         return 0;
     }
 
+    /**
+     *
+     * @return Este sirve para seleccionar al estudiante que se le quiera
+     * modificar los datos.
+     */
     public int selectStudent() {
         count = 0;
         seeStudent(count);
@@ -670,6 +822,12 @@ public class procedures {
         return positionStudent - 1;
     }
 
+    /**
+     *
+     * @param c
+     * @return Este sirve para mostrar los datos de los estudiantes y ver las
+     * modificaciones.
+     */
     public int seeStudent(int c) {
         if (count != registerStudents.length) {
             System.out.println("╠──────────────────────────────╣");
@@ -702,6 +860,10 @@ public class procedures {
         return (0);
     }
 
+    /**
+     *
+     * @return Sirve para modicar los datos del estudiante seleccionado.
+     */
     public String modifyStudent() {
         int numStudent = selectIdStudent();
         System.out.println("╠──────────────────────────────╣");
@@ -762,6 +924,11 @@ public class procedures {
 
     }
 
+    /**
+     *
+     * @param count
+     * @return Sirve para ordenar los grupos de manera ramdom.
+     */
     public int groupRamdon(int count) {
 
         if (count != registerStudents.length) {
@@ -781,6 +948,12 @@ public class procedures {
 
     }
 
+    /**
+     *
+     * @param generateR
+     * @param countVar
+     * @return Esta función sirve para generar los grupos ramdom.
+     */
     public int generateRamdon(int generateR, int countVar) {
         int i = 0;
 
@@ -811,6 +984,10 @@ public class procedures {
 
     }
 
+    /**
+     * Esta función sirve para filtrar a los estudiantes por la ubicación
+     * geografica seleccionada.
+     */
     public void seeRegion() {
         System.out.println("────────────────────╣");
         for (int i = 0; i < registerRegion.length; i++) {
@@ -824,6 +1001,10 @@ public class procedures {
         System.out.print("─>");
     }
 
+    /**
+     * Este sirve para agrupar a los estudiantes por la ubicación geografica
+     * seleccionada.
+     */
     public void groupR() {
         for (int i = 0; i < registerStudents.length; i++) {
             ramdom[i] = -1;
@@ -834,9 +1015,7 @@ public class procedures {
 
     /**
      * Este metodo funciona para colocar los nombres en orden alfabetico de
-     * forma acendente
-     *
-     *
+     * forma ascendente.
      */
     public void alphabetAcending() {
         fillAlphabet();
@@ -846,6 +1025,10 @@ public class procedures {
 
     }
 
+    /**
+     * Este metodo funciona para colocar los nombres en orden alfabetico de
+     * forma descendente
+     */
     public void alphabetDescending() {
         fillAlphabet();
         Arrays.sort(alphabetArray, Collections.reverseOrder());
@@ -855,7 +1038,7 @@ public class procedures {
     }
 
     /**
-     * Asigna los dato a un arreglo para ordenarlos afabeticamente*
+     * Asigna los datos a un arreglo para ordenarlos alfabeticamente*.
      */
     public void fillAlphabet() {
 
@@ -866,8 +1049,8 @@ public class procedures {
     }
 
     /**
-     * Este funcion tiene como fin asignar datos a otro arreglo sirve de puente
-     * paera unir 2 funciones
+     * Este funcion tiene como fin asignar datos a otro arreglo, sirve de puente
+     * para unir 2 funciones.
      *
      */
     public void alphabetRegister() {
@@ -877,8 +1060,8 @@ public class procedures {
     }
 
     /**
-     * reordena los datos en en el arreglo pricipal en orden alfabetico
      *
+     * @return Reordena los datos en el arreglo pricipal en orden alfabetico.
      */
     public int listAlphabet() {
         if (exitAll == true) {
@@ -903,6 +1086,11 @@ public class procedures {
         return listAlphabet();
 
     }
+    
+    /**
+     * Este sirve para llamar diferentes metodos para ordenar la lista de forma
+     * ascendente.
+     */
 
     public void idAcending() {
 
@@ -914,7 +1102,7 @@ public class procedures {
     }
 
     /**
-     * Asigna los dato a un arreglo para ordenarlos afabeticamente*
+     * Asigna los datos a un arreglo para ordenarlos alfabeticamente*
      */
     public void fillId() {
         for (int j = 0; j < registerStudents.length; j++) {
@@ -927,7 +1115,7 @@ public class procedures {
 
     /**
      * Este funcion tiene como fin asignar datos a otro arreglo sirve de puente
-     * paera unir 2 funciones
+     * para unir 2 funciones.
      *
      */
     public void idRegister() {
@@ -936,12 +1124,23 @@ public class procedures {
         }
 
     }
+    
+    /**
+     * Este sirve para llamar diferentes metodos para ordenar la lista de forma
+     * descendente.
+     */
+
     public void idDescending() {
         fillId();
         Arrays.sort(idArray, Collections.reverseOrder());
         idRegister();
         listId();
     }
+    
+    /**
+     * 
+     * @return Este sirve para mostrar la lista.
+     */
 
     public int listId() {
         if (exitAll == true) {
@@ -967,6 +1166,11 @@ public class procedures {
         return listId();
 
     }
+    
+    /**
+     * Este sirve para llamar diferentes metodos para ordenar la lista de forma
+     * alfabetica.
+     */
 
     public void alphabetLog() {
         fillAlphaLog();
@@ -976,9 +1180,9 @@ public class procedures {
 
     }
 
-  /*
-    Asigna los dato a un arreglo para ordenarlos afabeticamente*
-    */
+    /**
+     * Asigna los dato a un arreglo para ordenarlos afabeticamente*.
+     */
     public void fillAlphaLog() {
 
         for (int j = 0; j < registerStudents.length; j++) {
@@ -989,7 +1193,7 @@ public class procedures {
 
     /**
      * Este funcion tiene como fin asignar datos a otro arreglo sirve de puente
-     * paera unir 2 funciones
+     * para unir 2 funciones.
      *
      */
     public void alphaRegLog() {
@@ -999,9 +1203,8 @@ public class procedures {
     }
 
     /**
-     * reordena los datos en en el arreglo pricipal en orden alfabetico
      *
-     * @return 
+     * @return Reordena los datos en en el arreglo pricipal en orden alfabetico
      */
     public int listAlphaLog() {
         if (exitAll == true) {
@@ -1026,6 +1229,11 @@ public class procedures {
         return listAlphaLog();
 
     }
+    
+    /**
+     * 
+     * @return Sirve para ver todos los estudiantes.
+     */
 
     public int seeAllStudents() {
 
@@ -1040,6 +1248,14 @@ public class procedures {
 
     }
 
+    /**
+     *
+     * @param mail
+     * @return
+     * @throws AddressException
+     * @throws MessagingException Este metodo sirve para seleccionar un archivo
+     * y enviarlo al maildestination.
+     */
     public String sendEmail(String mail) throws AddressException, MessagingException {
 
         String email = "progradura2711@gmail.com";

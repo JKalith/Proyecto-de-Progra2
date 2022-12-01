@@ -1,12 +1,9 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package ClassProyect;
 
 /**
  *
- * @author james
+ * @author James Arias Avalos
+ * @author Diego Herrera López
  */
 public class person {
 
@@ -15,9 +12,20 @@ public class person {
     private String geographicLocation;
     private String name;
 
+    /**
+     * Este es el constructor vacio de persona.
+     */
     public person() {
     }
 
+    /**
+     * 
+     * @param name
+     * @param email
+     * @param gender
+     * @param geographicLocation Estos son los get y set de estudiantes con sus
+     * respectivos datos.
+     */
     public person(String name, String email, String gender, String geographicLocation ) {
         this.email = email;
         this.gender = gender;

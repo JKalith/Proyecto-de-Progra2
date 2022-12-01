@@ -1,19 +1,25 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package ClassProyect;
 
 /**
  *
- * @author james
+ * @author James Arias Avalos
+ * @author Diego Herrera López
  */
-public class Student extends person{
+public class Student extends person {
+
     private String idStudent;
 
+    /**
+     * Este es el constructor vacio de estudiantes.
+     */
     public Student() {
     }
 
+    /**
+     *
+     * @param idStudent Estos son los get y set de estudiantes con sus
+     * respectivos datos.
+     */
     public Student(String idStudent) {
         this.idStudent = idStudent;
     }
@@ -40,13 +46,7 @@ public class Student extends person{
     @Override
     public String toString() {
         return '}' + super.toString() + "Student{" + "idStudent=" + idStudent;
-        
+
     }
 
-
-
-
-
-
-    
 }
