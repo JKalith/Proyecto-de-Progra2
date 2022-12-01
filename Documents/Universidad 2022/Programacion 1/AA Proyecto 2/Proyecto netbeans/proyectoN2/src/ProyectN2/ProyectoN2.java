@@ -12,15 +12,22 @@ import java.util.logging.Logger;
 import javax.mail.MessagingException;
 /**
  *
- * @author james
+ * @author James Arias Avalos
+ * @author Diego Herrera López
  */
+
 public class ProyectoN2 {
 
     /**
      * @param args the command line arguments
      */
     static procedures procedures = new procedures();
-
+    
+/**
+ * @param args
+ * @throws IOException 
+ * 
+ */
     public static void main(String[] args) throws IOException {
         procedures.nameUser();
         menu();
