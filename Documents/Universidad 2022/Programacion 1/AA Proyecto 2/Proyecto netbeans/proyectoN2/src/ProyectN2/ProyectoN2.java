@@ -11,6 +11,7 @@ import javax.mail.MessagingException;
  *
  * @author James Arias Avalos
  * @author Diego Herrera López
+ * 
  */
 public class ProyectoN2 {
 
