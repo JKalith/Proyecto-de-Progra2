@@ -1,3 +1,7 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Main.java to edit this template
+ */
 package ProyectN2;
 
 import java.io.BufferedReader;
@@ -28,46 +32,47 @@ import javax.mail.internet.MimeMessage;
 import javax.mail.internet.MimeMultipart;
 import javax.swing.JOptionPane;
 
+
 /**
- *
  * @author James Arias Avalos
  * @author Diego Herrera López Esta clase contiene todos lo metodos para la
  * ejecucion del programa, ya que cada metodo tiene una funcion en especifico
  * para cada seccion que tiene este programa.
- *
- * Se extrajeron las siguientes librerias de internet import java.util.Arrays;
- * import java.util.Collections;
+ * 
+ * Se extrajeron las siguientes librerias de internet
+ *import java.util.Arrays;
+ *import java.util.Collections;
  * http://puntocomnoesunlenguaje.blogspot.com/2014/09/como-ordenar-arrays-en-java.html
- *
+ * 
  */
 public class procedures {
 
-    public int count = 0;
-    int countGroup = 0;
-    public int countVar = 0;
-    int groupCount = 0;
-    int groupN = 0;
-    int numGroups = 1;
-    int numGroup = 0;
-    int personGroup = 0;
-    public int ramdom[] = new int[18];
-    int spareCount = 0;
-    public boolean exitAll = true;
-    boolean filter = true;
-    public String[] alphabetArray = new String[18];
-    public String idArray[] = new String[18];
-    public String numStudent = null;
-    public String userName;
-    String ubicationF;
     public Scanner scanner = new Scanner(System.in);
     public Scanner scannerTwo = new Scanner(System.in);
+    public boolean exitAll = true;
+    public String userName;
+    public int count = 0;
+    int personGroup = 0;
+    public int countVar = 0;
     static Student student = new Student();
     public Student registerStudents[] = new Student[18];
     public Student registerRamdomS[] = new Student[18];
     public Student registerRegion[] = new Student[18];
     public Student registerR[] = new Student[18];
+    public String numStudent = null;
+    public int ramdom[] = new int[18];
+    public String[] alphabetArray = new String[18];
+    public String idArray[] = new String[18];
     public Student registerP[] = new Student[18];
-    
+    boolean filter = true;
+    int spareCount = 0;
+    int numGroups = 1;
+    int numGroup = 0;
+    int groupN = 0;
+    int countGroup = 0;
+    int groupCount = 0;
+    String ubicationF;
+
     /**
      *
      * @return Esta función se encarga de mostrar el menu principal, donde
@@ -79,12 +84,12 @@ public class procedures {
         System.out.println("║Digite una opcion ║");
         System.out.println("╚═══════════╝");
         System.out.println("╓───────────────────────────╗");
-        System.out.println("║1) Ver lista de estudiantes                 ║");
-        System.out.println("║2) Editar estudiantes                       ║");
-        System.out.println("║3) Ordenar grupos                           ║");
-        System.out.println("║4) Enviar gmail                             ║");
-        System.out.println("║5) Guia de usuario                          ║");
-        System.out.println("║8) Salir del programa                       ║");
+        System.out.println("║1) Ver lista de estudiantes                   ║");
+        System.out.println("║2) Editar estudiantes                         ║");
+        System.out.println("║3) Ordenar grupos                             ║");
+        System.out.println("║4) Enviar gmail                               ║");
+        System.out.println("║5) Guia de usuario                            ║");
+        System.out.println("║8) Salir del programa                         ║");
         System.out.println("╙───────────────────────────╝");
         System.out.print("─>");
 
@@ -101,12 +106,12 @@ public class procedures {
     public int selectMenu() {
         int option = 0;
         System.out.println("╓────────────────────────────────╗");
-        System.out.println("║Ordenar listas de estudinates                       ║");
-        System.out.println("║1) Ordenar en orden de alfabetico acendente         ║");
-        System.out.println("║2) Ordenar en orden de alfabetico decendente        ║");
-        System.out.println("║3) Ordenar de carnet de forma acendente             ║");
-        System.out.println("║4) Ordenar de carnet de forma desendente            ║");
-        System.out.println("║5) Ver lista de estudiantes                         ║");
+        System.out.println("║Ordenar listas de estudinates                         ║");
+        System.out.println("║1) Ordenar en orden de alfabetico acendente           ║");
+        System.out.println("║2) Ordenar en orden de alfabetico decendente          ║");
+        System.out.println("║3) Ordenar de carnet de forma acendente               ║");
+        System.out.println("║4) Ordenar de carnet de forma desendente              ║");
+        System.out.println("║5) Ver lista de estudiantes                           ║");
         System.out.println("╙────────────────────────────────╝");
         System.out.print("─>");
 
@@ -189,14 +194,14 @@ public class procedures {
     public int crudMenu() {
         System.out.println("         Seleccione una opcion");
         System.out.println("╓────────────────────────╗");
-        System.out.println("║1)Editar el nombre                     ║");
-        System.out.println("║2)Editar el email                      ║");
-        System.out.println("║3)Editar el carnet                     ║");
-        System.out.println("║4)Editar el genero                     ║");
-        System.out.println("║5)Borrar Estudiante                    ║");
-        System.out.println("║6)Agregar o Remplazar Estudiante       ║");
-        System.out.println("║7)Ver todos los estudiantes            ║");
-        System.out.println("║8)Salir al menu principal              ║");
+        System.out.println("║1)Editar el nombre                       ║");
+        System.out.println("║2)Editar el email                        ║");
+        System.out.println("║3)Editar el carnet                       ║");
+        System.out.println("║4)Editar el genero                       ║");
+        System.out.println("║5)Borrar Estudiante                      ║");
+        System.out.println("║6)Agregar o Remplazar Estudiante         ║");
+        System.out.println("║7)Ver todos los estudiantes              ║");
+        System.out.println("║8)Salir al menu principal                ║");
         System.out.println("╙────────────────────────╝");
         System.out.print("─>");
         int option = scanner.nextInt();
@@ -213,8 +218,8 @@ public class procedures {
     public int selectTypeG() {
         System.out.println("         Seleccione una opcion");
         System.out.println("╓───────────────────────────╗");
-        System.out.println("║Digite 1 si desea los grupos por lista      ║");
-        System.out.println("║Digite 2 si desea los grupos Ramdom         ║");
+        System.out.println("║Digite 1 si desea los grupos por lista        ║");
+        System.out.println("║Digite 2 si desea los grupos Ramdom           ║");
         System.out.println("╙───────────────────────────╝");
         int selectTypeG = 0;
         selectTypeG = scanner.nextInt();
@@ -230,7 +235,7 @@ public class procedures {
     public int selectGroup() {
 
         System.out.println("               Seleccione una opcion");
-        System.out.println("╓────────────────────────────────╗");
+        System.out.println("╓───────────────────────────────╗");
         System.out.println("║1)Grupos por ubicacion                              ║");
         System.out.println("║2)Agrupar por genero                                ║");
         System.out.println("║3)Agrupar ramdom por cantidad de grupos             ║");
@@ -238,7 +243,7 @@ public class procedures {
         System.out.println("║5)Agrupar ramdom por cantidad de grupos             ║");
         System.out.println("║6)Agrupar por cantidad de personas                  ║");
         System.out.println("║7)Agrupar por ubicacion Bonus ramdom y por lista    ║");
-        System.out.println("╙────────────────────────────────╝");
+        System.out.println("╙───────────────────────────────╝");
         int selectTypeG = 0;
         selectTypeG = scanner.nextInt();
         return selectTypeG;
@@ -252,7 +257,7 @@ public class procedures {
      */
     public String selectMail() {
         System.out.println("╓────────────────────────────────╗");
-        System.out.println("║1)Escriba la ubicaion del correo a enviar           ║");
+        System.out.println("║1)Escriba la ubicaion del correo a enviar             ║");
         System.out.println("╙────────────────────────────────╝");
         System.out.print("─>");
         String selectMail = scannerTwo.nextLine();
@@ -355,13 +360,13 @@ public class procedures {
         if (numM == 0) {
             if (registerRegion[count] == null) {
                 registerRegion[count] = registerStudents[numM];
-
+         
                 return index(-1);
             }
         }
         if (registerRegion[count] == null) {
             registerRegion[count] = registerStudents[numM];
-
+          
             return index(numM);
         }
         if (registerStudents[numM].getGeographicLocation().equals(registerRegion[count].
@@ -511,10 +516,8 @@ public class procedures {
                 myWriter.write("\n");
                 var = false;
             }
-            System.out.println("Estudiante " + (j + 1) + ") " + registerR[j].
-                    getName() + " N◦ carnet " + registerR[j].getIdStudent());
-            myWriter.write("Estudiante " + (j + 1) + ") " + registerR[j].
-                    getName() + " N◦ carnet " + registerR[j].getIdStudent());
+            System.out.println("Estudiante " + (j + 1) + ") " + registerR[j].getName() + " N◦ carnet " + registerR[j].getIdStudent());
+            myWriter.write("Estudiante " + (j + 1) + ") " + registerR[j].getName() + " N◦ carnet " + registerR[j].getIdStudent());
             myWriter.write("\n");
 
             if (exitAll == true) {
@@ -541,8 +544,7 @@ public class procedures {
 
         int t = 0;
         for (int i = 0; i < registerStudents.length; i++) {
-            if (registerRegion[locationPerson].getGeographicLocation().
-                    equalsIgnoreCase(registerStudents[i].getGeographicLocation())) {
+            if (registerRegion[locationPerson].getGeographicLocation().equalsIgnoreCase(registerStudents[i].getGeographicLocation())) {
 
                 registerR[t] = null;
                 t++;
@@ -1032,7 +1034,7 @@ public class procedures {
      */
     public void alphabetAcending() {
         fillAlphabet();
-        Arrays.sort(alphabetArray, Collections.reverseOrder());
+        Arrays.sort(alphabetArray,Collections.reverseOrder());
         alphabetRegister();
         listAlphabet();
 
@@ -1054,6 +1056,7 @@ public class procedures {
      * Asigna los datos a un arreglo para ordenarlos alfabeticamente*.
      */
     public void fillAlphabet() {
+       
 
         for (int j = 0; j < registerStudents.length; j++) {
             alphabetArray[j] = registerStudents[j].getName();
@@ -1067,7 +1070,7 @@ public class procedures {
      *
      */
     public void alphabetRegister() {
-
+   
         for (int i = 0; i < registerStudents.length; i++) {
             registerR[i] = registerStudents[i];
         }
@@ -1108,7 +1111,7 @@ public class procedures {
     public void idAcending() {
 
         fillId();
-        Arrays.sort(idArray, Collections.reverseOrder());
+        Arrays.sort(idArray,Collections.reverseOrder());
         idRegister();
         listId();
 
@@ -1246,9 +1249,10 @@ public class procedures {
      */
     public int seeAllStudents() {
 
+
         System.out.println("_______________________________________________________________________");
         for (int i = 0; i < registerStudents.length; i++) {
-            System.out.println("Num " + (i + 1) + ")" + "Estudiante " + registerP[i].getName() + " carnet " + registerP[i].getIdStudent());
+            System.out.println("Num " + (i+1) + ")" + "Estudiante "+registerP[i].getName()+" carnet "+registerP[i].getIdStudent());
         }
         return 0;
 
@@ -1311,18 +1315,20 @@ public class procedures {
     }
 
     /**
+     * rellena el arreglo para los grupos
      *
-     * @return Rellena el arreglo para los grupos
+     * @return
      */
     public int fillGroups() {
         if (exitAll == false) {
 
-            clearRegisterR();
+          clearRegisterR();
             count = 0;
             exitAll = true;
         }
 
         registerR[count] = registerStudents[count];
+   
 
         if (count == registerStudents.length) {
             return 0;
@@ -1347,19 +1353,20 @@ public class procedures {
     }
 
     /**
+     * rellena el arreglo con numeros ramdom
      *
-     * @return Rellena el arreglo con numeros ramdom.
+     * @return
      */
     public int fillRamdomG() {
 
         if (exitAll == true) {
             count = 0;
-            for (int i = 0; i < registerStudents.length; i++) {
-                registerR[i] = null;
-
+   for (int i = 0; i < registerStudents.length; i++) {
+           registerR[i] = null;
+              
             }
             exitAll = false;
-
+            
         }
 
         int var = (int) ((Math.random() * 18));
@@ -1388,8 +1395,9 @@ public class procedures {
     }
 
     /**
+     * envia la cantidad de grupos que desea ordenar
      *
-     * @return Envia la cantidad de grupos que desea ordenar.
+     * @return
      */
     public int selectGroupS() {
         System.out.println("seleccione la cantidad de grupos de desea realizar ");
@@ -1398,11 +1406,6 @@ public class procedures {
         return amountG;
     }
 
-    /**
-     *
-     * @return Esta función sirve para escribir la cantidad de estudiantes por
-     * grupo.
-     */
     public int selectForP() {
         System.out.println("seleccione la cantidad de estudiantes por grupo de desea realizar ");
         int amountG = scanner.nextInt();
@@ -1411,97 +1414,103 @@ public class procedures {
     }
 
     /**
+     * este metodo sirve para agrupar los estudiantes por cantidad de grupos
      *
-     * @return @throws java.io.IOException Este metodo sirve para agrupar los
-     * estudiantes por cantidad de grupos.
+     * @return
      */
     public int groupStudents() throws IOException {
         System.out.println("seleccione la ubicaion donde va a crear el archivo");
         ubicationF = createFile();
-        FileWriter myWriter = new FileWriter(ubicationF);
-        count = 0;
-
-        filter = true;
-        spareCount = 0;
-        countGroup = -1;
-
-        groupCount = 0;
-        numGroups = selectGroupS();
-        numGroup = registerR.length / numGroups;
-        groupN = numGroups * numGroup;
-        groupN = registerR.length - groupN;
-
-        if (groupN > 0) {
-            spareCount = groupN;
-            countGroup = -1;
-
-        }
-        for (int i = 0; i < registerStudents.length; i++) {
-            if (countGroup == -1) {
-                countGroup = 1;
-                System.out.println("Este es el grupo " + countGroup);
-
-                myWriter.write("Este es el grupo " + countGroup);
-                myWriter.write("\n");
-                countGroup = 2;
-            }
-
-            if (groupCount == numGroup) {
-                System.out.println("Este es el grupo " + countGroup);
-
-                myWriter.write("Este es el grupo " + countGroup);
-                myWriter.write("\n");
+        FileWriter myWriter =   new FileWriter(ubicationF);
+         count = 0;
+      
+           
+             
                 filter = true;
+                spareCount = 0;
+                countGroup = -1;
+               
                 groupCount = 0;
-                countGroup++;
-            }
+                numGroups = selectGroupS();
+                numGroup = registerR.length / numGroups;
+                groupN = numGroups * numGroup;
+                groupN = registerR.length - groupN;
+            
+                if (groupN > 0) {
+                    spareCount = groupN;
+                    countGroup = -1;
+                
 
-            System.out.println("Estudiante " + (count + 1) + ") " + registerR[count].getName() + " N◦ carnet " + registerR[count].getIdStudent());
-            myWriter.write("Estudiante " + (count + 1) + ") " + registerR[count].getName() + " N◦ carnet " + registerR[count].getIdStudent());
-            myWriter.write("\n");
-            if (filter == true) {
-                if (spareCount > 0) {
-                    groupCount = groupCount - 1;
-                    spareCount = spareCount - 1;
+            }
+            for (int i = 0; i < registerStudents.length; i++) {
+                if (countGroup == -1) {
+                    countGroup = 1;
+                    System.out.println("Este es el grupo " + countGroup);
+
+                    myWriter.write("Este es el grupo " + countGroup);
+                    myWriter.write("\n");
+                    countGroup = 2;
                 }
 
-                filter = false;
+                if (groupCount == numGroup) {
+                    System.out.println("Este es el grupo " + countGroup);
+
+                    myWriter.write("Este es el grupo " + countGroup);
+                    myWriter.write("\n");
+                    filter = true;
+                    groupCount = 0;
+                    countGroup++;
+                }
+
+                System.out.println("Estudiante " + (count + 1) + ") " + registerR[count].getName() + " N◦ carnet " + registerR[count].getIdStudent());
+                myWriter.write("Estudiante " + (count + 1) + ") " + registerR[count].getName() + " N◦ carnet " + registerR[count].getIdStudent());
+                myWriter.write("\n");
+                if (filter == true) {
+                    if (spareCount > 0) {
+                        groupCount = groupCount - 1;
+                        spareCount = spareCount - 1;
+                    }
+
+                    filter = false;
+                }
+
+                count++;
+                groupCount++;
             }
+    
+            return 0;
 
-            count++;
-            groupCount++;
         }
-
-        return 0;
-
-    }
-
-    /**
-     *
-     * @return @throws java.io.IOException Este metodo funciona para crear los
-     * grupos por persona.
-     */
+        /**
+         * este metodo funciona para crear los grupos por persona
+         *
+         * @return
+         * @throws java.io.IOException
+         */
     public int groupForP() throws IOException {
         System.out.println("seleccione la ubicaion donde va a crear el archivo");
         ubicationF = createFile();
         try (FileWriter myWriter = new FileWriter(ubicationF)) {
+           
 
-            filter = true;
-            spareCount = 0;
-            countGroup = -1;
-            count = 0;
-            groupCount = 0;
-            System.out.println("seleccione la ubicacion donde se va almacenar los datos");
-            numGroups = selectForP();
-            personGroup = numGroups;
-            numGroup = registerR.length / numGroups;
-            groupN = numGroups * numGroup;
-            groupN = registerR.length - groupN;
-            exitAll = false;
-            if (groupN == 1) {
-                spareCount = groupN;
+                filter = true;
+                spareCount = 0;
                 countGroup = -1;
-            }
+                count = 0;
+                groupCount = 0;
+                System.out.println("seleccione la ubicacion donde se va almacenar los datos");
+                numGroups = selectForP();
+                personGroup = numGroups;
+                numGroup = registerR.length / numGroups;
+                groupN = numGroups * numGroup;
+                groupN = registerR.length - groupN;
+                exitAll = false;
+                if (groupN == 1) {
+                    spareCount = groupN;
+                    countGroup = -1;
+                }
+
+    
 
             for (int i = 0; i < registerStudents.length; i++) {
 
@@ -1544,11 +1553,9 @@ public class procedures {
         return 0;
 
     }
-
     /**
-     *
-     * @throws IOException Esta funcion sirve para organizar los estudiantes por
-     * genero.
+     * esta funcion sirve para organizar los estudiantes por genero
+     * @throws IOException 
      */
     public void groupGender() throws IOException {
         System.out.println("seleccione la ubicaion donde va a crear el archivo");
@@ -1579,11 +1586,9 @@ public class procedures {
         myWriter.close();
 
     }
-
     /**
-     *
-     * @throws IOException Esta funcion sirve para organizar las personas por
-     * ubicion.
+     * esta funcion sirve para organizar las personas por ubicion
+     * @throws IOException 
      */
     public void groupsUbication() throws IOException {
         count = 1;
@@ -1606,7 +1611,7 @@ public class procedures {
 
             for (int j = 0; j < registerStudents.length; j++) {
                 if (registerRegion[i].getGeographicLocation().equals(registerStudents[j].getGeographicLocation())) {
-
+          
                     count++;
                     System.out.println("Estudiante " + (count) + ") " + registerStudents[j].getName() + " N◦ carnet " + registerStudents[j].getIdStudent());
                     myWriter.write("Estudiante " + (count) + ") " + registerStudents[j].getName() + " N◦ carnet " + registerStudents[j].getIdStudent());
@@ -1617,18 +1622,12 @@ public class procedures {
         }
         myWriter.close();
     }
-
     /**
-     * Este metodo sirve para guardar o almacenar el texto del archivo txt, la
-     * cual se almacena en la variable text.
+     * Este metodo sirve para guardar o almacenar el texto del archivo
+     * txt, la cual se almacena en la variable text.
      */
     public void readTxt() {
-        
-        System.out.println("────────────────────────────");
-        System.out.println("Seleccione el; archivo de la guia de usuario");
-        System.out.println("────────────────────────────");
-        String direction = selectFile();
-        
+ String direction="";
         try {
 
             BufferedReader bf = new BufferedReader(new FileReader(direction));
@@ -1642,6 +1641,7 @@ public class procedures {
 
             System.out.println("No se encontro el archivo seleccionado");
         }
-
+        
+    
     }
 }

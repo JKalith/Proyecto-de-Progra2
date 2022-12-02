@@ -5,7 +5,7 @@ package ClassProyect;
  * @author James Arias Avalos
  * @author Diego Herrera López
  */
-public class Student extends Person {
+public class Student extends person {
 
     private String idStudent;
 
