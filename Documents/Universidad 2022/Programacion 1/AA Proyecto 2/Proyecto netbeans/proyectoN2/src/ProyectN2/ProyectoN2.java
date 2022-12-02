@@ -52,7 +52,6 @@ public class ProyectoN2 {
                 break;
             }
             case 3: {
-
                 menuGroup();
                 break;
             }
@@ -61,7 +60,7 @@ public class ProyectoN2 {
                 break;
 
             case 5:
-
+                procedures.readTxt();
                 break;
             case 6:
                 break;
@@ -169,11 +168,33 @@ public class ProyectoN2 {
         switch (procedures.selectGroup()) {
 
             case 1:
-                procedures.readerData();
+                procedures.groupsUbication();
+
                 break;
             case 2:
+                procedures.groupGender();
                 break;
             case 3:
+                procedures.fillRamdomG();
+                procedures.groupStudents();
+                break;
+            case 4:
+                procedures.fillRamdomG();
+                procedures.groupForP();
+                break;
+
+            case 5:
+                procedures.fillGroups();
+                procedures.groupStudents();
+
+                break;
+            case 6:
+                procedures.fillGroups();
+                procedures.groupForP();
+                break;
+            case 7:
+                procedures.readerData();
+
                 break;
 
         }
