@@ -1,7 +1,7 @@
 package ProyectN2;
 
 import javax.swing.JFileChooser;
-import ProyectN2.procedures;
+import ProyectN2.Procedures;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -12,12 +12,12 @@ import javax.mail.MessagingException;
  * @author James Arias Avalos
  * @author Diego Herrera López
  */
-public class ProyectoN2 {
+public class ProyectN2 {
 
     /**
      * @param args the command line arguments
      */
-    static procedures procedures = new procedures();
+    static Procedures procedures = new Procedures();
 
     /**
      * @param args
